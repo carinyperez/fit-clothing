@@ -9,7 +9,8 @@
     border: 1px solid black; 
     margin: 0 7.5px 15px; 
     overflow: hidden;
-    background-color: #EBE9EA; 
+    background-color: #e8e8e8; 
+    
 
     &:hover {
         cursor: pointer;
@@ -24,12 +25,12 @@
     }
 
     &.small {
-        height: 300px; 
+        height: 300px;
     }
   
     &.large {
         height: 350px;
-
+        
     }
 
     &:first-child {
@@ -40,10 +41,10 @@
     }
 
     .background-image {
-        width: 50%;
+        width: 45%;
         height: 100%;
         background-position: center; 
-        background-size: cover;
+        background-size: cover; 
         background-repeat: no-repeat;
 
     }
