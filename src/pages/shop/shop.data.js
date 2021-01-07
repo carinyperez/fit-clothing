@@ -232,7 +232,7 @@ const SHOP_DATA =
         ]
     },
     {
-        id: 4,
+        id: 5,
         title: 'Tshirts and Tops',
         routeName: 'tshirtsandtops', 
         items: [

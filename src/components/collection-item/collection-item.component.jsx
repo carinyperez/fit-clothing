@@ -9,8 +9,8 @@ const CollectionItem = ({id, name, price, imageUrl,changeImageUrl}) => (
         style={{
             backgroundImage: `url(${imageUrl})`
         }}
-    />
-
+        // onClick={() => (`${console.log(changeImageUrl)}`)}
+        />
     <div className='collection-footer'>
         <span className='name'>{name}</span>
         <span className='price'>{price}</span>
