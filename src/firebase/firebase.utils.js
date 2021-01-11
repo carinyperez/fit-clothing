@@ -3,13 +3,13 @@ import 'firebase/firestore';
 import 'firebase/auth';
 
 const config = {
-  apiKey: 'AIzaSyCdHT-AYHXjF7wOrfAchX4PIm3cSj5tn14',
-  authDomain: 'crwn-db.firebaseapp.com',
-  databaseURL: 'https://crwn-db.firebaseio.com',
-  projectId: 'crwn-db',
-  storageBucket: 'crwn-db.appspot.com',
-  messagingSenderId: '850995411664',
-  appId: '1:850995411664:web:7ddc01d597846f65'
+    apiKey: "AIzaSyDA4QLKY-zU48y4d7epCZfDmIAshPG8TII",
+    authDomain: "fit-clothing.firebaseapp.com",
+    projectId: "fit-clothing",
+    storageBucket: "fit-clothing.appspot.com",
+    messagingSenderId: "1003636097345",
+    appId: "1:1003636097345:web:4f90436996e43f8c6361c0",
+    measurementId: "G-3MSJZYXQN8"
 };
 
 firebase.initializeApp(config);
@@ -20,6 +20,7 @@ export const firestore = firebase.firestore();
 
 const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({ prompt: 'select_account' });
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
-
+export const signInWithGoogle = () => {
+    auth.signInWithPopup(provider);
+}
 export default firebase;
