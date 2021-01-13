@@ -12,8 +12,39 @@ const config = {
     measurementId: "G-3MSJZYXQN8"
 };
 
-firebase.initializeApp(config);
+// async function needed to make api request to firestore
+// stores users into database 
+export const createUserProfileDocument = async(userAuth, additionalData) => {
+    if (!userAuth) return; 
+    //get a reference to the user’s document in the users collection
+    const userRef = firestore.doc(`users/${userAuth.uid}`);
+    // returns current content of the document, returns a promise 
+    const snapShot = await userRef.get(); 
 
+    // if no data write data to the document using set
+    if (!snapShot.exists) {
+        const {displayName, email} = userAuth; 
+        const createdAt = new Date(); 
+
+    try {
+        await userRef.set({
+            displayName,
+            email, 
+            createdAt,
+            ...additionalData
+        })
+
+    } catch(error) {
+        console.log('error creating user', error.message); 
+
+    }
+    // return user's data 
+    return userRef;
+
+    } 
+}
+
+firebase.initializeApp(config);
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
