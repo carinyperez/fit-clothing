@@ -3,10 +3,13 @@ import './header.styles.scss';
 import {Link} from 'react-router-dom'; 
 import {ReactComponent as Logo} from '../../assets/wellness-logo.svg'; 
 import { auth } from '../../firebase/firebase.utils';
+import {connect} from 'react-redux'; 
+
 
 // function reference named header that takes props and returns a component 
 const Header = ({currentUser}) => (
     <div className='header'>
+        {/*Adds clickable links to the site */}
         <Link className='logo-container' to='/'>
             <Logo className='logo'/>
         </Link>
@@ -30,4 +33,9 @@ const Header = ({currentUser}) => (
     </div>
 )
 
-export default Header; 
+const mapStateToProps = state => ({
+  currentUser: state.user.currentUser
+})
+
+
+export default connect(mapStateToProps)(Header);  

@@ -1,17 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter} from 'react-router-dom'; 
-
-
 import './index.css';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import {Provider} from 'react-redux';
+import store from './redux/store';
+
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  //Makes the redux store available to any nested components that have been wrapped in the connect function
+  // the redux application state lives in an object called the store 
+  // the store is created by passing in a reducer
+  // getState is current state value 
+  // dispach to update state 
+  // the store stores the global state 
+  // A Redux store is created using a root reducer function
+  <Provider store={store}> 
+    {/* Browser router renders components based on the route, imported from react-router-dom*/}
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root')
 );
 
