@@ -191,7 +191,7 @@ const SHOP_DATA =
                 id: 2,
                 name: 'Charcoal Sports Bra',
                 imageUrl: 'https://cdn.shopify.com/s/files/1/1812/3759/products/PowerBra_Charcoal_01_650x.jpg?v=1557241436',
-                changeImageUrl: 'https://cdn.shopify.com/s/files/1/1812/3759/products/PowerBra_Charcoal_01_650x.jpg?v=1557241436',
+                changeImageUrl: 'https://cdn.shopify.com/s/files/1/1812/3759/products/PowerBra_Charcoal_02_650x.jpg?v=1557241436',
                 price: '$20.40'
             },
             {
@@ -233,56 +233,53 @@ const SHOP_DATA =
     },
     {
         id: 5,
-        title: 'Tshirts and Tops',
+        title: 'T-shirts and Tops',
         routeName: 'tshirtsandtops', 
         items: [
             {
                 id: 1,
-                name: 'Light Pink Sports Bra',
+                name: 'Pink LongSleeve',
                 imageUrl: 'https://cdn.shopify.com/s/files/1/1812/3759/products/MoveLongSleeve_PinkMarl_01_650x.jpg?v=1557241177',
                 changeImageUrl: 'https://cdn.shopify.com/s/files/1/1812/3759/products/MoveLongSleeve_PinkMarl_02_650x.jpg?v=1557241177',
                 price: '$22.20'
             },
             {
                 id: 2,
-                name: 'Charcoal Sports Bra',
+                name: 'Black Crop Top',
                 imageUrl: 'https://cdn.shopify.com/s/files/1/1812/3759/products/TieCropTop_Black_01_650x.jpg?v=1587051525',
                 changeImageUrl: 'https://cdn.shopify.com/s/files/1/1812/3759/products/TieCropTop_Black_02_650x.jpg?v=1587051525',
                 price: '$20.30'
             },
             {
                 id: 3,
-                name: 'Turquoise Sports Bra',
+                name: 'Camo Long Sleeve',
                 imageUrl: 'https://cdn.shopify.com/s/files/1/1812/3759/products/Camo_LongSleeve_Grey_01_650x.jpg?v=1587050284',
                 changeImageUrl: 'https://cdn.shopify.com/s/files/1/1812/3759/products/Camo_LongSleeve_Grey_02_650x.jpg?v=1587050284',
                 price: '$30.80'
             },
             {
                 id: 4,
-                name: 'Lilac Sports Bra',
+                name: 'Red Long Sleeve',
                 imageUrl: 'https://cdn.shopify.com/s/files/1/1812/3759/products/PowerLongSleeve_Red_01_650x.jpg?v=1557241372',
                 changeImageUrl: 'https://cdn.shopify.com/s/files/1/1812/3759/products/PowerLongSleeve_Red_01_650x.jpg?v=1557241372',
                 price: '$22.20'
             },
             {
                 id: 5,
-                name: 'Aqua Sports Bra',
+                name: 'Blue Long Sleeve',
                 imageUrl: 'https://cdn.shopify.com/s/files/1/1812/3759/products/LongSleeve_RoyalBlue_01_f04f5a75-0ef4-4ef6-b0f5-a216e667ece5_650x.jpg?v=1606819009',
                 changeImageUrl: 'https://cdn.shopify.com/s/files/1/1812/3759/products/LongSleeve_RoyalBlue_03_8407b483-bec4-4fbe-9736-8e3857410ea8_1200x.jpg?v=1606819010',
                 price: '$22.20'
             },
             {
                 id: 6,
-                name: 'Green Sports Bra',
+                name: 'Red Crop Top',
                 imageUrl: 'https://cdn.shopify.com/s/files/1/1812/3759/products/TrueTieCropTop_Red_01_650x.jpg?v=1606822387',
-                changeImageUrl: 'https://cdn.shopify.com/s/files/1/1812/3759/products/TrueTieCropTop_Red_04_450x.jpg?v=1606822387',
+                changeImageUrl:'https://cdn.shopify.com/s/files/1/1812/3759/products/PowerBra_Charcoal_02_650x.jpg?v=1557241436',
                 price: '$17.40'
             }
         ]
-    },
-
-
-    
+    }
     
 ]
 export default SHOP_DATA; 
