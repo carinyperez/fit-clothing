@@ -14,6 +14,30 @@
     margin-bottom: 5px;
 
   }
+  .quickadd {
+    display: flex; 
+    flex-direction: row; // default value 
+
+
+    .quickadd-content {
+        text-align: center;
+        justify-content: space-between; 
+        line-height: 0px;   
+    }
+  
+    button {
+        border: 1px solid #e0e0e0;   
+        margin: 8px;
+        background: transparent; 
+        width: 30px; 
+        height: 30px;
+        
+        &:hover {
+            background-color: #f1f1f1; 
+            border: 1px solid #e0e0e0; 
+        }  
+    }   
+  }
 
   .collection-footer {
     width: 100%;
