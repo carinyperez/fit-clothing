@@ -9,8 +9,8 @@ import SignInAndSignUpPage from './pages/sign-in-and-signup/sign-in-and-sign-up.
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import {connect} from 'react-redux'; 
 import {setCurrentUser} from './redux/user/user.actions';
-
-
+import { selectCurrentUser } from './redux/user/user.selector';
+import {createStructuredSelector} from 'reselect'; 
 
 class App extends React.Component {
 
@@ -66,7 +66,7 @@ class App extends React.Component {
 //           {() => this.props.currentUser ? (<Redirect to='/'/>) : (<SignInAndSignUpPage/>)}
 
 const mapStateToProps = ({user}) => ({
-  currentUser: user.currentUser
+  currentUser: selectCurrentUser
 }); 
 
 
