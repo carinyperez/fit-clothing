@@ -1,7 +1,8 @@
 import React from 'react'; 
 import './collection-item.styles.scss'; 
 import {connect} from 'react-redux'; 
-import { addItem } from '../../redux/cart/cart.actions';
+import { addItem, toggleCartVisible,toggleCartHidden} from '../../redux/cart/cart.actions';
+
 // reference to anon function that takes props and renders component
 // pulling data from shop data 
 
@@ -10,7 +11,7 @@ class CollectionItem extends React.Component {
         super(props); 
         this.state = {
             backgroundImage: `url(${props.item.imageUrl})`, 
-            hidden: true
+            hidden: true, 
         }
     }
    handleMouseEnter = () => {
@@ -29,11 +30,11 @@ class CollectionItem extends React.Component {
         });
     };
     handleSubmit = (event) => {
+        const {toggleCartVisible} = this.props; 
         event.preventDefault();
+        toggleCartVisible();
+        // setTimeout(toggleCartVisible(), 5000);
         // on submit popup checkout cart 
-        // this.setState({
-        //    hidden: true
-        // });
     } 
 
     render () {
@@ -56,7 +57,7 @@ class CollectionItem extends React.Component {
             <div className='quickadd-content'>
             <form onSubmit={this.handleSubmit}>
                 <p>Quick Add</p>
-                <button type='submit' onClick={() => addItem(item)}>S</button>
+                <button onClick={() => addItem(item)}>S</button>
                 <button type='submit' onClick={() => addItem(item)}>M</button>
                 <button type='submit' onClick={() => addItem(item)}>L</button>
                 <button type='submit' onClick={() => addItem(item)}>XL</button>
@@ -73,9 +74,10 @@ class CollectionItem extends React.Component {
     }
 }
 
-const mapStateToProps = dispatch => ({
-    addItem: item => dispatch(addItem(item))
+const mapDispatchToProps = dispatch => ({
+    addItem: item => dispatch(addItem(item)),
+    toggleCartVisible: () => dispatch(toggleCartVisible()),
 })
 
-export default connect(null,mapStateToProps)(CollectionItem);
+export default connect(null,mapDispatchToProps)(CollectionItem);
 
