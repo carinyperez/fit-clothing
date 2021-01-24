@@ -9,3 +9,20 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
     // returns an array of existing objects with the object appended to the end quantity appended 
     return [...cartItems, {...cartItemToAdd, quantity: 1}]
 }
+
+
+export const removeItemFromCart = (cartItems, cartItemToRemove) => {
+    const existingCartItem = cartItems.find(cartItem => cartItem.id === cartItemToRemove.id);
+
+    if(existingCartItem.quantity === 1) {
+        // keeps the values if true 
+        return cartItems.filter(cartItem => cartItem.id !== cartItemToRemove.id)
+    }
+
+    return cartItems.map(
+        cartItem => cartItem.id === cartItemToRemove.id ? {...cartItem, quantity: cartItem.quantity - 1 }
+        : cartItem
+    )
+}
+
+

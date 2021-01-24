@@ -1,6 +1,5 @@
-import { addItem } from './cart.actions';
 import CartActionTypes from './cart.types'; 
-import {addItemToCart} from './cart.utils'; 
+import {addItemToCart, removeItemFromCart } from './cart.utils';
 // we use reducers when we want to move our state into a global object 
 // initial state is an object literal with the property hidden 
 const INITIAL_STATE = {
@@ -27,11 +26,21 @@ const cartReducer = (state = INITIAL_STATE, action) => {
             cartItems: addItemToCart(state.cartItems, action.payload) 
             // cartItems: [...state.cartItems, action.payload]
         }
-
-
+        case CartActionTypes.REMOVE_ITEM: 
+        return  {
+            ...state,
+            cartItems: removeItemFromCart(state.cartItems, action.payload) 
+            // cartItems: [...state.cartItems, action.payload]
+        }
+        case CartActionTypes.CLEAR_ITEM_FROM_CART: 
+        return  {
+            ...state, 
+            cartItems: state.cartItems.filter(cartItem => cartItem.id !== action.payload.id )
+        }
         default:
             return state;
 
+        
     }
 }
 
