@@ -1,7 +1,7 @@
 import React from 'react'; 
 import './collection-item.styles.scss'; 
 import {connect} from 'react-redux'; 
-import { addItem, toggleCartVisible,toggleCartHidden} from '../../redux/cart/cart.actions';
+import { addItem, toggleCartVisible} from '../../redux/cart/cart.actions';
 
 // reference to anon function that takes props and renders component
 // pulling data from shop data 
@@ -30,11 +30,8 @@ class CollectionItem extends React.Component {
         });
     };
     handleSubmit = (event) => {
-        const {toggleCartVisible} = this.props; 
         event.preventDefault();
-        toggleCartVisible();
-        // setTimeout(toggleCartVisible(), 5000);
-        // on submit popup checkout cart 
+
     } 
 
     render () {
@@ -75,8 +72,7 @@ class CollectionItem extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-    addItem: item => dispatch(addItem(item)),
-    toggleCartVisible: () => dispatch(toggleCartVisible()),
+    addItem: item => dispatch(addItem(item))
 })
 
 export default connect(null,mapDispatchToProps)(CollectionItem);
