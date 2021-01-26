@@ -6,7 +6,9 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import {Provider} from 'react-redux';
-import store from './redux/store';
+import {store,persistor} from './redux/store';
+import {PersistGate} from 'redux-persist/integration/react'; 
+
 
 
 ReactDOM.render(
@@ -20,7 +22,9 @@ ReactDOM.render(
   <Provider store={store}> 
     {/* Browser router renders components based on the route, imported from react-router-dom*/}
     <BrowserRouter>
-      <App />
+      <PersistGate persistor={persistor}>
+        <App />
+      </PersistGate>
     </BrowserRouter>
   </Provider>,
   document.getElementById('root')

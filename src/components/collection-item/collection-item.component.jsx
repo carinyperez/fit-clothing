@@ -1,7 +1,7 @@
 import React from 'react'; 
 import './collection-item.styles.scss'; 
 import {connect} from 'react-redux'; 
-import { addItem, toggleCartVisible} from '../../redux/cart/cart.actions';
+import { addItem} from '../../redux/cart/cart.actions';
 
 // reference to anon function that takes props and renders component
 // pulling data from shop data 
