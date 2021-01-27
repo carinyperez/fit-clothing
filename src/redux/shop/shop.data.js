@@ -1,6 +1,9 @@
-const SHOP_DATA = 
-[ 
-    {
+// data normalization: storing lists of elements inside of an object instead of an array 
+
+
+const SHOP_DATA = { 
+    // must pass keys into objects otherwise
+    bottomsandleggings: {
         id: 1,
         title: 'Bottoms and Leggings',
         routeName: 'bottomsandleggings', 
@@ -70,7 +73,7 @@ const SHOP_DATA =
             }
         ]
     },
-    {
+    hoodiesandjackets: {
         id: 2,
         title: 'Hoodies and Jackets',
         routeName: 'hoodiesandjackets', 
@@ -112,7 +115,7 @@ const SHOP_DATA =
             }
         ]
     },
-    {
+    shorts: {
         id: 3,
         title: 'Shorts',
         routeName: 'shorts', 
@@ -175,7 +178,7 @@ const SHOP_DATA =
             }
         ]
     },
-    {
+    sportsbras:{
         id: 4,
         title: 'Sports Bras',
         routeName: 'sportsbras', 
@@ -231,7 +234,7 @@ const SHOP_DATA =
             }
         ]
     },
-    {
+    tshirtsandtops:{
         id: 5,
         title: 'T-shirts and Tops',
         routeName: 'tshirtsandtops', 
@@ -279,7 +282,6 @@ const SHOP_DATA =
                 price: '17.40'
             }
         ]
-    }
-    
-]
+    }   
+}; 
 export default SHOP_DATA; 
