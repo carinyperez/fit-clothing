@@ -1,4 +1,6 @@
-.custom-button {
+import styled from 'styled-components'; 
+
+export const CustomButtonContainer = styled.button`
     min-width: 165px;
     width: auto;
     height: 50px;
@@ -21,17 +23,4 @@
       background-color: #ff9000;
       color: white; 
     }
-  
-  
-    &.inverted {
-      background-color: white;
-      color: black;
-      border: 1px solid black;
-  
-      &:hover {
-        background-color: black;
-        color: white;
-        border: none;
-      }
-    }
-  }
+`; 
