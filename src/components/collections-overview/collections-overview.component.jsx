@@ -1,16 +1,17 @@
 import React from 'react'; 
-import './collections-overview.styles.scss'; 
 import CollectionPreview from '../collection-preview/collection-preview.component'
 import { selectCollectionsForPreview } from '../../redux/shop/shop.selector.js';
 import {createStructuredSelector} from 'reselect'; 
 import {connect} from 'react-redux'; 
+import { CollectionOverviewContainer } from './collections-overview.styles';
+
 
 const CollectionOverview = ({collections}) => (
-    <div className='collections-overview'>
+    <CollectionOverviewContainer>
         {collections.map(({id, ...otherCollectionProps}) => (
             <CollectionPreview key={id} {...otherCollectionProps}/>
         ))}
-    </div>
+    </CollectionOverviewContainer>
 )
 
 const mapStateToProps = createStructuredSelector ({

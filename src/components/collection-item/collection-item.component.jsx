@@ -1,10 +1,8 @@
 import React from 'react'; 
-import './collection-item.styles.scss'; 
 import {connect} from 'react-redux'; 
 import { addItem} from '../../redux/cart/cart.actions';
+import { CollectionItemContainer,ImageContainer,QuickAddContainer,QuickAddContentContainer,CollectionButtonContainer,CollectionFooterContainer, NameContainer,PriceContainer} from './collection-item';
 
-// reference to anon function that takes props and renders component
-// pulling data from shop data 
 
 class CollectionItem extends React.Component {
     constructor(props) {
@@ -38,35 +36,34 @@ class CollectionItem extends React.Component {
         const {hidden} = this.state;
         const {item, addItem} = this.props;   
         return (
-        <div className='collection-item'
+        <CollectionItemContainer
             onMouseEnter={this.handleMouseEnter}
             onMouseLeave={this.handleMouseLeave}
         >
-            <div className='image' 
+            <ImageContainer
             style={{
                 backgroundImage: this.state.backgroundImage
             }}
-            
             />
-            <div className='quickadd'>
+            <QuickAddContainer>
             {
             hidden ? null : 
-            <div className='quickadd-content'>
+            <QuickAddContentContainer>
             <form onSubmit={this.handleSubmit}>
                 <p>Quick Add</p>
-                <button onClick={() => addItem(item)}>S</button>
-                <button type='submit' onClick={() => addItem(item)}>M</button>
-                <button type='submit' onClick={() => addItem(item)}>L</button>
-                <button type='submit' onClick={() => addItem(item)}>XL</button>
+                <CollectionButtonContainer onClick={() => addItem(item)}>S</CollectionButtonContainer>
+                <CollectionButtonContainer onClick={() => addItem(item)}>M</CollectionButtonContainer>
+                <CollectionButtonContainer onClick={() => addItem(item)}>L</CollectionButtonContainer>
+                <CollectionButtonContainer onClick={() => addItem(item)}>XL</CollectionButtonContainer>
             </form>
-            </div>
+            </QuickAddContentContainer>
             }
-            </div>
-            <div className='collection-footer'>
-                <span className='name'>{item.name}</span>
-                <span className='price'>${item.price}</span>
-            </div>
-        </div>
+            </QuickAddContainer>
+            <CollectionFooterContainer>
+                <NameContainer>{item.name}</NameContainer>
+                <PriceContainer>${item.price}</PriceContainer>
+            </CollectionFooterContainer>
+        </CollectionItemContainer>
         ); 
     }
 }

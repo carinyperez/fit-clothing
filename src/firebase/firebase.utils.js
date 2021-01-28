@@ -12,37 +12,46 @@ const config = {
     measurementId: "G-3MSJZYXQN8"
 };
 
-// async function needed to make api request to firestore
-// stores users into database 
+
+// use userAuth object to query database for a document reference object 
 export const createUserProfileDocument = async(userAuth, additionalData) => {
     if (!userAuth) return; 
-    //get a reference to the user’s document in the users collection
-    const userRef = firestore.doc(`users/${userAuth.uid}`);
-    // returns current content of the document, returns a promise 
+    // "current place" but no actual data 
+    const userRef = firestore.doc(`users/$1234`);
+    // ge the collection reference 
+    const collectionRef = firestore.collection('users'); 
+    // use CRUD methods on a doc ref to get a snapshot 
     const snapShot = await userRef.get(); 
 
-    // if no data write data to the document using set
-    if (!snapShot.exists) {
+    const collectionSnapshot = await collectionRef.get(); 
+    console.log({collection: collectionSnapshot.docs.map(doc => doc.data())}); 
+
+    // if snapshot does not exiist create an object reference
+    if(!snapShot.exists) {
         const {displayName, email} = userAuth; 
         const createdAt = new Date(); 
 
-    try {
-        await userRef.set({
-            displayName,
-            email, 
-            createdAt,
-            ...additionalData
-        })
-
-    } catch(error) {
-        console.log('error creating user', error.message); 
-
+        try {
+            await userRef.set({
+                displayName: 'Test User', 
+                email: 'randomEmail@gmail.com', 
+                createdAt, 
+                ...additionalData
+            }); 
+        } catch(error) {
+            console.log('error creating user', error.message); 
+        }
     }
-    // return user's data 
-    return userRef;
 
-    } 
+    return userRef; 
 }
+
+
+export const addCollectionAndDocuments = (collectionKey, objectsToAdd) => {
+    const collectionRef = firestore.collection(collectionKey); 
+    console.log(collectionRef); 
+}
+
 
 firebase.initializeApp(config);
 
