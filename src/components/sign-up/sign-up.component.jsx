@@ -15,11 +15,9 @@ class SignUp extends React.Component {
             password: '', 
             confirmPassword: ''
         }
-        console.log(this.state); 
     }
 
     handleSubmit = async event => {
-        // console.log(event); 
         event.preventDefault(); 
 
         // destructure the state object  
@@ -46,7 +44,6 @@ class SignUp extends React.Component {
     }
 
     handleChange = event => {
-        // console.log(event); 
         const {name, value} = event.target;
         this.setState({[name]: value}); 
     }

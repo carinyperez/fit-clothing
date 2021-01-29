@@ -11,7 +11,7 @@ export const selectCollections = createSelector(
 export const selectCollectionsForPreview = createSelector(
     [selectCollections],
     // map array of keys and return object at key   
-    collections => Object.keys(collections).map(key => collections[key])
+    collections => collections ? Object.keys(collections).map(key => collections[key]) :[]
 
 )
 // find collection.id matching the url param of our collection id map 
@@ -20,7 +20,7 @@ export const selectCollectionsForPreview = createSelector(
 export const selectCollection = memoize((collectionUrlParam) => createSelector(
     [selectCollections], 
     // matching id to id map 
-    collections => collections[collectionUrlParam]
+    collections => collections ? collections[collectionUrlParam] : null
 )); 
 
 

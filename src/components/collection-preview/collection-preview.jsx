@@ -5,6 +5,8 @@ export const CollectionPreviewContainer = styled.div`
     display: flex;
     flex-direction: column;
     margin-bottom: 30px;
+    padding-right: 10px; 
+    
 `;
 
 export const CollectionTitleContainer = styled.h1`
@@ -15,8 +17,9 @@ export const CollectionTitleContainer = styled.h1`
 `;
 
 export const PreviewContainer = styled.div`
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
 `; 
 
 

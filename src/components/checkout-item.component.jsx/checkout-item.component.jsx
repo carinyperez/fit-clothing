@@ -1,8 +1,7 @@
 import React from 'react'; 
 import {connect} from 'react-redux'; 
 import { clearItemFromCart, addItem, removeItem} from '../../redux/cart/cart.actions';
-import { CheckOutItemContainer, ImageContainerContainer, ImageContainer,TextContainer,QuantityContainer,removeButtonContainer } from './checkout-item.styles';
-
+import { CheckOutItemContainer, ImageContainerContainer, ImageContainer,TextContainer,QuantityContainer,RemoveButtonContainer } from './checkout-item.styles';
 
 
 const CheckoutItem = ({cartItem, clearItem, addItem, removeItem}) => {
@@ -19,7 +18,7 @@ const CheckoutItem = ({cartItem, clearItem, addItem, removeItem}) => {
             <div onClick={() => addItem(cartItem)}>+</div>
         </QuantityContainer>
         <TextContainer>${price}</TextContainer>
-        <removeButtonContainer onClick={() => clearItem(cartItem)}>&#10005;</removeButtonContainer>
+        <RemoveButtonContainer onClick={() => clearItem(cartItem)}>&#10005;</RemoveButtonContainer>
     </CheckOutItemContainer>
     );
 }

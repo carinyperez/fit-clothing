@@ -18,7 +18,7 @@ export const createUserProfileDocument = async(userAuth, additionalData) => {
     if (!userAuth) return; 
     // "current place" but no actual data 
     const userRef = firestore.doc(`users/$1234`);
-    // ge the collection reference 
+    // get the collection reference 
     const collectionRef = firestore.collection('users'); 
     // use CRUD methods on a doc ref to get a snapshot 
     const snapShot = await userRef.get(); 
@@ -46,11 +46,46 @@ export const createUserProfileDocument = async(userAuth, additionalData) => {
     return userRef; 
 }
 
+// batch write documents 
+export const addCollectionAndDocuments = async(collectionKey, objectsToAdd) => {
+    // get the collection reference
+    const collectionRef = firestore.collection(collectionKey);
+    // a set of write operations  
+    const batch = firestore.batch();
+    // loop through array 
+    objectsToAdd.forEach(obj => {
+        // get a document reference for each object 
+        const newDocRef = collectionRef.doc(); 
+        batch.set(newDocRef, obj); 
+    }); 
 
-export const addCollectionAndDocuments = (collectionKey, objectsToAdd) => {
-    const collectionRef = firestore.collection(collectionKey); 
-    console.log(collectionRef); 
+    // fires batch request 
+    return await batch.commit()
 }
+
+
+// example {bottomsandleggings: {id:1 title:"bottomsandleggings"}}
+export const convertCollectionsSnapshotToMap = (collections) => {
+    const transformedCollection = collections.docs.map(doc => {
+        // call data method to get data from the snapshot 
+        const {title, items} = doc.data(); 
+        return {
+            routeName: encodeURI(title.toLowerCase()),
+            id: doc.id, 
+            title,
+            items
+        }
+    }); 
+    return transformedCollection.reduce((accumulator, collection) => {
+        accumulator[collection.title.toLowerCase()] = collection;
+        return accumulator; 
+    }, {}); 
+}; 
+
+
+
+
+
 
 
 firebase.initializeApp(config);

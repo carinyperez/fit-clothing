@@ -22,7 +22,6 @@ class SignIn extends React.Component {
     } catch(error) {
       console.error(error); 
     }
-    console.log(this.state); 
     
   };
 

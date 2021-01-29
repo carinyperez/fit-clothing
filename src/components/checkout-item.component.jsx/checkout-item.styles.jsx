@@ -34,7 +34,7 @@ export const QuantityContainer = styled(TextContainer)`
     }
 `;
 
-export const removeButtonContainer = styled.div`
+export const RemoveButtonContainer = styled.div`
     padding-left: 12px;
     cursor: pointer;
 `; 

@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import { CollectionOverviewContainer } from './collections-overview.styles';
 
 
-const CollectionOverview = ({collections}) => (
+const CollectionsOverview = ({collections}) => (
     <CollectionOverviewContainer>
         {collections.map(({id, ...otherCollectionProps}) => (
             <CollectionPreview key={id} {...otherCollectionProps}/>
@@ -18,6 +18,6 @@ const mapStateToProps = createStructuredSelector ({
     collections: selectCollectionsForPreview
 })
 
-export default connect(mapStateToProps)(CollectionOverview); 
+export default connect(mapStateToProps)(CollectionsOverview); 
 
 
