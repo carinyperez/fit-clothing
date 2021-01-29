@@ -1,8 +1,6 @@
 import React from 'react';
 import StripeCheckout from 'react-stripe-checkout'; 
-import './stripe-button.styles.scss';
 import logo from '../../assets/wellness-logo.svg'; 
-
 
 const StripeCheckoutButton = ({price}) => {
     const priceForStripe = price * 100; 

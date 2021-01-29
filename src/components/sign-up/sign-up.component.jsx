@@ -2,8 +2,7 @@ import React from 'react';
 import FormInput from '../form-input/form-input.component'; 
 import CustomButton from '../custom-button/custom-button.component';
 import {auth, createUserProfileDocument} from '../../firebase/firebase.utils'; 
-import './sign-up.styles.scss'; 
-
+import { SignUpContainer,TitleContainer  } from './sign-up.styles';
 
 class SignUp extends React.Component {
 
@@ -19,15 +18,11 @@ class SignUp extends React.Component {
 
     handleSubmit = async event => {
         event.preventDefault(); 
-
-        // destructure the state object  
         const {displayName, email, password, confirmPassword} = this.state; 
-
         if (password !== confirmPassword) {
             alert("passwords don't match"); 
             return; 
         }
-
         try {
             const {user} = await auth.createUserWithEmailAndPassword(email, password); 
             await createUserProfileDocument(user, {displayName}); 
@@ -37,12 +32,11 @@ class SignUp extends React.Component {
                 password: '', 
                 confirmPassword: ''
             }); 
-
         } catch(error) {
             console.error(error); 
         }
     }
-
+    
     handleChange = event => {
         const {name, value} = event.target;
         this.setState({[name]: value}); 
@@ -52,8 +46,8 @@ class SignUp extends React.Component {
         const {displayName, email, password, confirmPassword} = this.state; 
 
         return (
-            <div className='sign-up'>
-                <h2 className='title'> I do not have an account</h2>
+            <SignUpContainer >
+                <TitleContainer> I do not have an account</TitleContainer>
                 <span>Sign up with your email and password</span>
     
             <form className='sign-up-form' onSubmit={this.handleSubmit}>
@@ -91,7 +85,7 @@ class SignUp extends React.Component {
                 />
                 <CustomButton type='submit'> SIGN UP</CustomButton>
             </form>
-            </div>
+            </SignUpContainer>
         )
     }
 }
