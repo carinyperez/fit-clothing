@@ -7,7 +7,6 @@ import {connect} from 'react-redux';
 import { updateCollections } from '../../redux/shop/shop.actions';
 import WithSpinner from '../../components/with-spinner/with-spinner.component';
 
-
 const CollectionsOverviewWithSpinner = WithSpinner(CollectionsOverview); 
 const CollectionsPageWithSpinner = WithSpinner(CollectionPage); 
 
@@ -21,17 +20,53 @@ class ShopPage extends React.Component {
     unsubscribeFromSnapshot = null; 
 
     componentDidMount() {
-        //returns a reference to 'collections' 
         const {updateCollections} = this.props; 
-        const collectionRef = firestore.collection("collections"); 
-        // attaches a listener for onSnapshot events 
-        this.unsubscribeFromSnapshot = collectionRef.onSnapshot(async snapshot => {
+        //returns a reference to 'collections' 
+        const collectionRef = firestore.collection("collections");
+
+        collectionRef.get().then(snapshot => {
             // example {bottomsandleggings: {id:1 title:"bottomsandleggings"}}
-            const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
-            updateCollections(collectionsMap);
-            // if component mounts render wrapped component 
-            this.setState({loading:false}) 
-        })
+            const collectionsMap = convertCollectionsSnapshotToMap(snapshot); 
+            // sets type and payload 
+            updateCollections(collectionsMap); 
+            this.setState({loading: false});
+        });
+
+        /* 3 WAYS TO RETRIEVE DATA FROM FIREBASE 
+
+            1. USING PROMISES  
+            // makes api call to fetch back the data, similar to snapshot 
+            // new data from backend everytime our component mounts 
+            // collectionRef.get().then(snapshot => {
+            //     // example {bottomsandleggings: {id:1 title:"bottomsandleggings"}}
+            //     const collectionsMap = convertCollectionsSnapshotToMap(snapshot); 
+            //     // sets type and payload 
+            //     updateCollections(collectionsMap); 
+            //     this.setState({loading: false})
+            
+            2. USING OBSERVERVABLES AND OBSERVERS
+            // attaches a listener for onSnapshot events 
+            // new data from backend everytime it updates
+            // collectionRef.onSnapshot(async snapshot => {
+            //     // example {bottomsandleggings: {id:1 title:"bottomsandleggings"}}
+            //     const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
+            //     updateCollections(collectionsMap);
+            //     // if component mounts render wrapped component 
+            //     this.setState({loading:false}) 
+            // })
+
+            3. USING FETCH WITH THE REST API 
+             // fetch endpoint 
+            // fetch('https://firestore.googleapis.com/v1/projects/fit-clothing/databases/(default)/documents/collections')
+            // .then(response => response.json())
+            // .then(collections => console.log(collections))
+
+        // })
+
+        */
+
+
+    
 
     } 
     render() {
