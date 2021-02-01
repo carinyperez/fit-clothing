@@ -6,7 +6,7 @@ import { selectIsCollectionsLoaded } from '../../redux/shop/shop.selector';
 import CollectionPage from './collection.component';
 
 const mapStateToProps = createStructuredSelector({
-    isLoading: (state) => !selectIsCollectionsLoaded(state)
+    isLoading: (state) => !(selectIsCollectionsLoaded(state))
 });
 
 const CollectionPageContainer = compose(
