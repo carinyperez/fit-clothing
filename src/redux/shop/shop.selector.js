@@ -26,5 +26,8 @@ export const selectCollection = memoize((collectionUrlParam) => createSelector(
 
 // data normalization: storing lists of elements inside of an object instead of an array 
 
-
+export const selectIsCollectionFetching = createSelector(
+    [selectShop], 
+    shop => shop.isFetching 
+); 
 
