@@ -1,16 +1,26 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
-
-const config = {
+// const config = {
+//     apiKey: "AIzaSyDA4QLKY-zU48y4d7epCZfDmIAshPG8TII",
+//     authDomain: "fit-clothing.firebaseapp.com",
+//     databaseURL: "https://fit-clothing-default-rtdb.firebaseio.com",
+//     projectId: "fit-clothing",
+//     storageBucket: "fit-clothing.appspot.com",
+//     messagingSenderId: "1003636097345",
+//     appId: "1:1003636097345:web:4f90436996e43f8c6361c0",
+//     measurementId: "G-3MSJZYXQN8"
+// };
+var config = {
     apiKey: "AIzaSyDA4QLKY-zU48y4d7epCZfDmIAshPG8TII",
     authDomain: "fit-clothing.firebaseapp.com",
+    databaseURL: "https://fit-clothing-default-rtdb.firebaseio.com",
     projectId: "fit-clothing",
     storageBucket: "fit-clothing.appspot.com",
     messagingSenderId: "1003636097345",
     appId: "1:1003636097345:web:4f90436996e43f8c6361c0",
     measurementId: "G-3MSJZYXQN8"
-};
+  };
 
 
 // use userAuth object to query database for a document reference object 
