@@ -28,6 +28,7 @@ class SignIn extends React.Component {
   };
 
   render() {
+    const {googleSignInStart} = this.props; 
     return (
       <SignInContainer>
         <h2>I already have an account</h2>
@@ -51,7 +52,7 @@ class SignIn extends React.Component {
           />
           <ButtonsContainer>
             <CustomButton type='submit'> Sign in </CustomButton>
-            <CustomButton type='button' onClick={this.props.googleSignInStart}>
+            <CustomButton type='button' onClick={googleSignInStart}>
               Sign in with Google
             </CustomButton>
           </ButtonsContainer>

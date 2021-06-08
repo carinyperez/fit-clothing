@@ -1,3 +1,4 @@
+import UserActionTypes from '../user/user.types';
 import CartActionTypes from './cart.types'; 
 import {addItemToCart, removeItemFromCart } from './cart.utils';
 // we use reducers when we want to move our state into a global object 
@@ -37,10 +38,15 @@ const cartReducer = (state = INITIAL_STATE, action) => {
             ...state, 
             cartItems: state.cartItems.filter(cartItem => cartItem.id !== action.payload.id )
         }
+        // clear cart items on sign out success 
+        // case UserActionTypes.SIGN_OUT_SUCCESS:
+        case CartActionTypes.CLEAR_CART:  
+        return {
+            ...state, 
+            cartItems:[]
+        }
         default:
-            return state;
-
-        
+            return state;  
     }
 }
 

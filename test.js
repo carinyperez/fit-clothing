@@ -4,4 +4,12 @@ function* gen() {
     console.log('b'); 
 }
 const g = gen(); 
-console.log(g); 
+// console.log(g); 
+
+const myPromise = new Promise((resolve, reject) => {
+    resolve('foo'); 
+    reject; 
+})
+
+console.log(myPromise.then(val => console.log(val))); 
+
