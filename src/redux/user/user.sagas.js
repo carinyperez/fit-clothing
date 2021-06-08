@@ -6,12 +6,15 @@ import { googleSignInSuccess, googleSignInFailure,
     emailSignInSuccess, emailSignInFailure, 
     signOutSuccess, signOutFailure, signUpSuccess,signUpFailure} from './user.actions';
 
-export function* getSnapshotFromUserAuth(userAuth) {
+export function* getSnapshotFromUserAuth(userAuth, additionalData) {
     try {
-        const userRef = yield call(createUserProfileDocument, userAuth); 
-        const userSnapshot = yield userRef.get(); 
-        yield put(googleSignInSuccess({id:userSnapshot.id, ...userSnapshot.data}))
+        console.log('get snapshot');
+        const userRef = yield call(createUserProfileDocument, userAuth, additionalData); 
+        const userSnapshot = yield userRef.get();
+        emailSignInSuccess(); 
+        yield put(emailSignInSuccess({id:userSnapshot.id, ...userSnapshot.data}))
     } catch (error) {
+        console.log(error); 
         yield put(emailSignInFailure(error))
     }
 }
@@ -57,8 +60,8 @@ export function* signUp({payload: {email, password, displayName}}) {
 }
 
 export function* signInAfterSignUp({payload: {user, additionalData}}) {
-    console.log(user, additionalData); 
-    yield createUserProfileDocument(user, additionalData); 
+    console.log('signInAfterSignUp');
+    yield getSnapshotFromUserAuth(user, additionalData); 
 }
 
 // yield is similar to await 
