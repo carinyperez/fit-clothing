@@ -8,8 +8,41 @@ import reportWebVitals from './reportWebVitals';
 import {Provider} from 'react-redux';
 import {store,persistor} from './redux/store';
 import {PersistGate} from 'redux-persist/integration/react'; 
+import {ApolloProvider} from 'react-apollo'; 
+// connect client to endpoint /graphql 
+import {createHttpLink} from 'apollo-link-http'; 
+import {InMemoryCache} from 'apollo-cache-inmemory'; 
+import {ApolloClient, gql} from 'apollo-boost'; 
 
 
+const httpLink = createHttpLink({
+  uri: 'https://crwn-clothing.com'
+})
+
+const cache = new InMemoryCache(); 
+const client = new ApolloClient({
+  link: httpLink,
+  cache
+})
+
+// like an sql query, we are querying to a graphql backend server 
+const graphQL = client.query({
+  query: gql`
+  {
+    getCollectionsByTitle(title: "hats") {
+      id 
+      title
+      items {
+        id
+        name 
+        price 
+        imageUrl
+      }
+    }
+  }
+  `
+})
+console.log(graphQL); 
 
 ReactDOM.render(
   //Makes the redux store available to any nested components that have been wrapped in the connect function
@@ -19,14 +52,16 @@ ReactDOM.render(
   // dispach to update state 
   // the store stores the global state 
   // A Redux store is created using a root reducer function
-  <Provider store={store}> 
-    {/* Browser router renders components based on the route, imported from react-router-dom*/}
-    <BrowserRouter>
-      <PersistGate persistor={persistor}>
-        <App />
-      </PersistGate>
-    </BrowserRouter>
-  </Provider>,
+  <ApolloProvider client={client}> 
+    <Provider store={store}> 
+        {/* Browser router renders components based on the route, imported from react-router-dom*/}
+        <BrowserRouter>
+          <PersistGate persistor={persistor}>
+            <App />
+          </PersistGate>
+        </BrowserRouter>
+      </Provider>
+  </ApolloProvider>,
   document.getElementById('root')
 );
 
