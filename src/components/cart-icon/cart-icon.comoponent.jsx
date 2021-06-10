@@ -1,26 +1,28 @@
 import React from 'react'; 
 import {connect} from 'react-redux';
-import { toggleCartHidden } from '../../redux/cart/cart.actions';
+// import { toggleCartHidden } from '../../redux/cart/cart.actions';
 import { selectCartItemsCount } from '../../redux/cart/cart.selectors';
 import {createStructuredSelector} from 'reselect'; 
 import { CartIconContainer,ShoppingIconContainer,ItemCountContainer } from './cart-icon.syles';
 
-
-
-const CartIcon = ({toggleCartHidden, itemCount}) => (
-    <CartIconContainer onClick={toggleCartHidden}>
+const CartIcon = (props) => {
+    const {itemCount} = props; 
+    const {toggleCartHidden} = props; 
+    return (
+    <CartIconContainer onClick={() => console.log(toggleCartHidden)}>
         <ShoppingIconContainer/>
         <ItemCountContainer>{itemCount}</ItemCountContainer>
     </CartIconContainer>
-); 
+    )
+}; 
 
 // action creator object will be merged into the component's props
 // dispatch is used with user actions
 
-const mapDispatchToProps = dispatch => ({
-    toggleCartHidden: () => dispatch(toggleCartHidden())
+// const mapDispatchToProps = dispatch => ({
+//     toggleCartHidden: () => dispatch(toggleCartHidden())
 
-});
+// });
 
 
 // deconstructing cart from state and cartItems from car
@@ -29,4 +31,4 @@ const mapStateToProps = (state) => createStructuredSelector({
     itemCount: selectCartItemsCount
 }); 
 
-export default connect(mapStateToProps, mapDispatchToProps)(CartIcon); 
+export default connect(mapStateToProps)(CartIcon); 

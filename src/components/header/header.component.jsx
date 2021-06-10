@@ -2,14 +2,12 @@ import React from 'react';
 import {ReactComponent as Logo} from '../../assets/wellness-logo.svg'; 
 import { auth } from '../../firebase/firebase.utils';
 import {connect} from 'react-redux'; 
-import CartIcon from '../cart-icon/cart-icon.comoponent';
+import {default as CartIcon} from '../cart-icon/cart-icon.container';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 import {createStructuredSelector} from 'reselect'; 
-import { selectCartHidden} from '../../redux/cart/cart.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selector';
 import {HeaderContainer, OptionsContainer, LogoContainer,OptionLink} from './header.styles'; 
 import { signOutStart } from '../../redux/user/user.actions';
-
 
 // function reference named header that takes props and returns a component 
 const Header = ({currentUser, hidden, signOutStart}) => (
@@ -42,7 +40,6 @@ const Header = ({currentUser, hidden, signOutStart}) => (
 
 const mapStateToProps = (state) => createStructuredSelector({
   currentUser: selectCurrentUser,
-  hidden: selectCartHidden
 }); 
 
 const mapDispatchToProps = dispatch => ({

@@ -4,7 +4,7 @@ import './App.css';
 import {Switch, Route, Redirect} from 'react-router-dom'; 
 import HomePage from './pages/homepage/homepage.component'; 
 import ShopPage from './pages/shop/shop.component'; 
-import Header from './components/header/header.component'; 
+import {default as Header} from './components/header/header.container'; 
 import SignInAndSignUpPage from './pages/sign-in-and-signup/sign-in-and-sign-up.component';
 import { auth, createUserProfileDocument, addCollectionAndDocuments } from './firebase/firebase.utils';
 import {connect} from 'react-redux'; 

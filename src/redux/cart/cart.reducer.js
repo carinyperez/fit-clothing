@@ -4,7 +4,7 @@ import {addItemToCart, removeItemFromCart } from './cart.utils';
 // we use reducers when we want to move our state into a global object 
 // initial state is an object literal with the property hidden 
 const INITIAL_STATE = {
-    hidden: true, 
+    hidden: true,
     cartItems: []
 }
 
