@@ -9,7 +9,7 @@ const CartIcon = (props) => {
     const {itemCount} = props; 
     const {toggleCartHidden} = props; 
     return (
-    <CartIconContainer onClick={() => console.log(toggleCartHidden)}>
+    <CartIconContainer onClick={() => toggleCartHidden()}>
         <ShoppingIconContainer/>
         <ItemCountContainer>{itemCount}</ItemCountContainer>
     </CartIconContainer>

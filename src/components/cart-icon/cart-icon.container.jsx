@@ -1,8 +1,7 @@
 import React from 'react'; 
 import {Mutation} from 'react-apollo'; 
 import {gql} from 'apollo-boost'; 
-import CartIcon from './cart-icon.comoponent'; 
-import { toggleCartHidden } from '../../redux/cart/cart.actions';
+import CartIcon from './cart-icon.component'; 
 
 const TOGGLE_CART_HIDDEN = gql`
     mutation ToggleCartHidden {
@@ -14,7 +13,7 @@ const CartIconContainer = () => {
     return (
         <Mutation mutation={TOGGLE_CART_HIDDEN}>
         {
-            togggleCartHidden => <CartIcon toggleCartHidden={toggleCartHidden}/>
+            toggleCartHidden => <CartIcon toggleCartHidden={toggleCartHidden}/>
         }
         </Mutation>
     )
