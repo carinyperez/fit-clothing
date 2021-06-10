@@ -3,7 +3,7 @@ import {ReactComponent as Logo} from '../../assets/wellness-logo.svg';
 import { auth } from '../../firebase/firebase.utils';
 import {connect} from 'react-redux'; 
 import {default as CartIcon} from '../cart-icon/cart-icon.container';
-import CartDropdown from '../cart-dropdown/cart-dropdown.component';
+import {default as CartDropdown} from '../cart-dropdown/cart-dropdown.container';
 import {createStructuredSelector} from 'reselect'; 
 import { selectCurrentUser } from '../../redux/user/user.selector';
 import {HeaderContainer, OptionsContainer, LogoContainer,OptionLink} from './header.styles'; 

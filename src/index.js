@@ -15,8 +15,6 @@ import {InMemoryCache} from 'apollo-cache-inmemory';
 import {ApolloClient, gql} from 'apollo-boost'; 
 import { resolvers,typeDefs } from './graphql/resolvers';
 
-
-
 const httpLink = createHttpLink({
   uri: 'https://crwn-clothing.com'
 })
@@ -32,7 +30,8 @@ const client = new ApolloClient({
 // mutation 
 client.writeData({
   data: {
-    cartHidden: true
+    cartHidden: false, 
+    cartItems: []
   }
 })
 

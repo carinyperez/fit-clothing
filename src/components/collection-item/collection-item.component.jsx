@@ -1,8 +1,9 @@
 import React from 'react'; 
 import {connect} from 'react-redux'; 
 import { addItem} from '../../redux/cart/cart.actions';
-import { CollectionItemContainer,ImageContainer,QuickAddContainer,QuickAddContentContainer,CollectionButtonContainer,CollectionFooterContainer, NameContainer,PriceContainer} from './collection-item';
-
+import { CollectionItemContainer,ImageContainer,
+    QuickAddContainer,QuickAddContentContainer,
+    CollectionButtonContainer,CollectionFooterContainer, NameContainer,PriceContainer} from './collection-item';
 
 class CollectionItem extends React.Component {
     constructor(props) {
@@ -17,7 +18,6 @@ class CollectionItem extends React.Component {
     this.setState({
         backgroundImage: `url(${changeImageUrl})`, 
         hidden: false
-    
       });
     };
     handleMouseLeave = () => {
@@ -34,7 +34,7 @@ class CollectionItem extends React.Component {
 
     render () {
         const {hidden} = this.state;
-        const {item, addItem} = this.props;   
+        const {item, addItemToCart} = this.props;   
         return (
         <CollectionItemContainer
             onMouseEnter={this.handleMouseEnter}
@@ -51,10 +51,10 @@ class CollectionItem extends React.Component {
             <QuickAddContentContainer>
             <form onSubmit={this.handleSubmit}>
                 <p>Quick Add</p>
-                <CollectionButtonContainer onClick={() => addItem(item)}>S</CollectionButtonContainer>
-                <CollectionButtonContainer onClick={() => addItem(item)}>M</CollectionButtonContainer>
-                <CollectionButtonContainer onClick={() => addItem(item)}>L</CollectionButtonContainer>
-                <CollectionButtonContainer onClick={() => addItem(item)}>XL</CollectionButtonContainer>
+                <CollectionButtonContainer onClick={() => addItemToCart(item)}>S</CollectionButtonContainer>
+                <CollectionButtonContainer onClick={() => addItemToCart(item)}>M</CollectionButtonContainer>
+                <CollectionButtonContainer onClick={() => addItemToCart(item)}>L</CollectionButtonContainer>
+                <CollectionButtonContainer onClick={() => addItemToCart(item)}>XL</CollectionButtonContainer>
             </form>
             </QuickAddContentContainer>
             }
@@ -68,9 +68,14 @@ class CollectionItem extends React.Component {
     }
 }
 
-const mapDispatchToProps = dispatch => ({
-    addItem: item => dispatch(addItem(item))
-})
+/*
+    const mapDispatchToProps = dispatch => ({
+        addItem: item => dispatch(addItem(item))
+    })
+*/ 
 
-export default connect(null,mapDispatchToProps)(CollectionItem);
+
+export default CollectionItem;
+// connect(null,mapDispatchToProps)
+
 
